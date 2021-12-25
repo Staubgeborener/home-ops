@@ -1,0 +1,20 @@
+version: "3"
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "81:80/tcp"
+      - "81:80/udp"
+    environment:
+      TZ: 'Europe/Berlin'
+      WEBPASSWORD: 'PASSWORDHIERREIN'  # hier euer Passwort eingeben
+    volumes:
+       - '/home/eric/docker-compose-files/pihole/pihole/:/etc/pihole/'
+       - '/home/eric/docker-compose-files/pihole/dnsmasq/:/etc/dnsmasq.d/'
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
