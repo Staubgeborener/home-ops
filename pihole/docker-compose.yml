@@ -11,10 +11,10 @@ services:
       - "81:80/udp"
     environment:
       TZ: 'Europe/Berlin'
-      WEBPASSWORD: 'PASSWORDHIERREIN'  # hier euer Passwort eingeben
+      WEBPASSWORD: 'PASSWORD'
     volumes:
-       - '/home/eric/docker-compose-files/pihole/pihole/:/etc/pihole/'
-       - '/home/eric/docker-compose-files/pihole/dnsmasq/:/etc/dnsmasq.d/'
+       - './pihole/pihole/:/etc/pihole/'
+       - './pihole/dnsmasq/:/etc/dnsmasq.d/'
     dns:
       - 127.0.0.1
       - 1.1.1.1
