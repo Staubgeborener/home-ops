@@ -1,11 +1,13 @@
 # git clone https://github.com/Hypfer/ICantBelieveItsNotValetudo
-version: '3.2'
+version: "3.3"
 services:
   icantbelieveitsnotvaletudo:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: "ICantBelieveItsNotValetudo"
     restart: always
+    container_name: icantbelieveitsnotvaletudo
+    ports:
+      - "3000:3000"
     volumes:
-      - /opt/docker_containers/ICantBelieveItsNotValetudo/config.json:/app/config.json
+      - ./config.json:/app/config.json
