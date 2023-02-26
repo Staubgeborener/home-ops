@@ -1,4 +1,4 @@
-# git clone https://github.com/Hypfer/ICantBelieveItsNotValetudo
+# git clone https://github.com/Hypfer/ICantBelieveItsNotValetudo && cd ./ICantBelieveItsNotValetudo
 version: "3.3"
 services:
   icantbelieveitsnotvaletudo:
