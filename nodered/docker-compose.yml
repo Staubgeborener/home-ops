@@ -1,3 +1,11 @@
+################################################################################
+# Node-RED Stack or Compose
+################################################################################
+# docker stack deploy node-red --compose-file docker-compose-node-red.yml
+# docker-compose -f docker-compose-node-red.yml -p myNoderedProject up
+
+# simple docker-compose up -d is enough - node red is running on port 1880
+################################################################################
 version: "3.7"
 
 services:
@@ -6,10 +14,7 @@ services:
     image: nodered/node-red:latest
     environment:
       - TZ=Europe/Berlin
-    ports:
-      - "1880:1880"
-    networks:
-      - node-red-net
+    network_mode: host
     volumes:
       - node-red-data:/data
 
