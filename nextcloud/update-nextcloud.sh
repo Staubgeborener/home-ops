@@ -6,7 +6,7 @@
 # Instead of adjusting several fields in the docker-compose each time, this can be done 
 # directly in this script.
 
-# The value can either be hardcoded in line 14 or passed as a parameter, i.e.:
+# The value can either be hardcoded in line 15 or passed as a parameter, i.e.:
 # ./update-nextcloud.sh        -> update to hard coded version in line 15
 # ./update-nextcloud.sh 25     -> update to 25-apache
 # ./update-nextcloud.sh latest -> update to latest (apache)
