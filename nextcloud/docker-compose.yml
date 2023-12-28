@@ -2,6 +2,7 @@ version: '3'
 
 services:
   db:
+    container_name: nextcloud_mariadb
     image: mariadb:10.5
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     restart: always
@@ -11,11 +12,16 @@ services:
       - db.env
 
   redis:
+    container_name: nextcloud_redis
     image: redis:alpine
     restart: always
 
   app:
+    container_name: nextcloud_app
     image: nextcloud:${NEXTCLOUD_VERSION}
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     volumes:
       - nextcloud:/var/www/html
@@ -39,6 +45,7 @@ services:
       - 8.8.8.8
 
   cron:
+    container_name: nextcloud_cron
     image: nextcloud:${NEXTCLOUD_VERSION}
     restart: always
     volumes:
@@ -52,6 +59,7 @@ services:
       - redis
 
   proxy:
+    container_name: nextcloud_proxy
     build: ./proxy
     restart: always
     ports:
