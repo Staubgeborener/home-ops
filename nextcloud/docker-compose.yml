@@ -40,6 +40,9 @@ services:
     restart: always
     volumes:
       - nextcloud:/var/www/html
+    env_file:
+      - db.env
+      - smtp.env
     entrypoint: /cron.sh
     depends_on:
       - db
