@@ -13,8 +13,7 @@ echo "*/5 * * * * docker exec -u www-data nextcloud_app_1 php -f /var/www/html/c
 */5 * * * * docker exec -u www-data nextcloud_app_1 php /var/www/html/occ files:scan-app-data
 0 0 * * 0 docker exec -u www-data nextcloud_app_1 php /var/www/html/occ fulltextsearch:index" >> /var/spool/cron/root
 ```
-
-sudo echo "*/5 * * * * docker exec -u www-data nextcloud_app_1 php /var/www/html/cron.php" >> /var/spool/cron/root
+(To the future-me: Use external storage support in future instead of `files_scan` command, this will do this whole sync stuff in background: [source](https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/external_storage_configuration_gui.html))
 
 # bz2
 Maybe some apps requires `bz2` package:
