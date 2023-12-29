@@ -27,3 +27,8 @@ fi
 export NEXTCLOUD_VERSION="$nc_version"
 
 docker-compose pull && docker-compose up --build -d
+
+# edit nextcloud config.php
+sudo docker exec --user www-data -it nextcloud_app php occ config:system:set default_phone_region --value="DE"
+sudo docker exec --user www-data -it nextcloud_app php occ config:system:set logtimezone --value="Europe/Berlin"
+sudo docker exec --user www-data -it nextcloud_app php occ config:system:set trusted_proxies 0 --value="localhost"
