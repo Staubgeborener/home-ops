@@ -26,5 +26,4 @@ fi
 
 export NEXTCLOUD_VERSION="$nc_version"
 
-docker-compose pull
-docker-compose up -d
+docker-compose pull && docker-compose up --build -d
