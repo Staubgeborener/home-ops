@@ -11,3 +11,5 @@ Add `$USER` to docker group and reboot system afterwards:
 sudo usermod -aG docker $USER
 sudo reboot
 ```
+
+**To Do:** Migrate all containers from `docker-compose` to `docker compose` [(source)](https://docs.docker.com/compose/migrate/)
