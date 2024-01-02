@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Workaround, because:
-# 1. nextcloud does not skip a release when updating and 
+# 1. nextcloud does not skip a release when updating and
 # 2. i am forced to update nextcloud using docker and not in the web interface
-# Instead of adjusting several fields in the docker-compose each time, this can be done 
+# Instead of adjusting several fields in the docker-compose each time, this can be done
 # directly in this script.
 
 # The value can either be hardcoded in line 15 or passed as a parameter, i.e.:
@@ -15,18 +15,20 @@
 nc_version=25
 #########################
 
+nc_version="${nc_version}-fpm"
 if [ "$#" -eq 1 ]; then
-    nc_version="$1"
-    if [ "$nc_version" != "latest" ]; then
-        nc_version="${nc_version}-fpm"
+    if [ "$1" != "latest" ]; then
+        nc_version="$1-fpm"
+    else
+        nc_version="fpm"
     fi
-else
-    nc_version="${nc_version}-fpm"
 fi
 
 export NEXTCLOUD_VERSION="$nc_version"
 
-docker-compose pull && docker-compose up --build -d
+docker-compose pull && docker-compose build --build-arg NEXTCLOUD_VERSION=$NEXTCLOUD_VERSION && docker-compose up -d
+
+sleep 2
 
 # edit nextcloud config.php and add missing indices
 sudo docker exec --user www-data -it nextcloud_app php occ config:system:set default_phone_region --value="DE"
