@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  gotify:
+    container_name: gotify-server
+    image: gotify/server
+    ports:
+      - 8680:80
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - gotify-data:/app/data
+
+  igotify-notification:
+    container_name: gotify-igotify-notification-assist
+    image: ghcr.io/androidseb25/igotify-notification-assist:latest
+    pull_policy: always
+    ports:
+      - 8681:8080
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - igotify-notification-data:/app/data
+
+volumes:
+  gotify-data:
+  igotify-notification-data:
