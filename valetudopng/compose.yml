@@ -1,0 +1,9 @@
+services:
+  valetudopng:
+    image: ghcr.io/erkexzcx/valetudopng:latest
+    container_name: valetudopng
+    restart: always
+    volumes:
+      - ./valetudopng/config.yml:/config.yml
+    ports:
+      - "3000:3000"
