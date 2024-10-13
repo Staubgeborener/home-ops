@@ -12,3 +12,6 @@ services:
     volumes:
       - ./config.json:/config.json
     restart: unless-stopped
+
+volumes:
+  config:
