@@ -1,9 +1,0 @@
-version: "3.8"
-services:
-  gatus:
-    container_name: gatus
-    image: twinproduction/gatus:latest
-    restart: always
-    network_mode: host
-    volumes:
-      - ./config:/config

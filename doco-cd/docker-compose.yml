@@ -1,0 +1,15 @@
+services:
+  app:
+    container_name: doco-cd
+    image: ghcr.io/kimdre/doco-cd:latest
+    restart: unless-stopped
+    ports:
+      - "82:80"
+    environment:
+      LOG_LEVEL: debug
+      GIT_ACCESS_TOKEN: ${GIT_ACCESS_TOKEN}
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET}
+    group_add:
+      - "996"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

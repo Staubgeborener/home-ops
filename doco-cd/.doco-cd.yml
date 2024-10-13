@@ -1,0 +1,4 @@
+name: test
+reference: refs/heads/main
+compose_files:
+  - gatus-compose.yml
