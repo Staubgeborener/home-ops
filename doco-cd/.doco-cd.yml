@@ -1,4 +1,5 @@
-name: test
+name: cloudflare-ddns
 reference: refs/heads/main
+working_dir: home-ops/cloudflare-ddns
 compose_files:
-  - gatus-compose.yml
+  - docker-compose.yml
