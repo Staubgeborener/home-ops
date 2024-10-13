@@ -1,5 +1,5 @@
 name: cloudflare-ddns
 reference: refs/heads/main
-working_dir: home-ops/cloudflare-ddns
+working_dir: cloudflare-ddns
 compose_files:
   - docker-compose.yml
