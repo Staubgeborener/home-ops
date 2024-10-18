@@ -5,3 +5,7 @@ config/
 volumes/
 data/
 letsencrypt/
+mosquitto-data/
+zigbee2mqtt-data/
+
+!/zigbee2mqtt/zigbee2mqtt-data/configuration.yaml
