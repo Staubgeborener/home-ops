@@ -15,5 +15,5 @@ services:
       --platform=github
       --endpoint=https://api.github.com/
       --token=${RENOVATE_TOKEN}
-      staubgeborener/gitops
+      staubgeborener/home-ops
     restart: unless-stopped
