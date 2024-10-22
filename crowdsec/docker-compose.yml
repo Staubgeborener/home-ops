@@ -2,6 +2,7 @@ services:
   crowdsec:
     container_name: crowdsec
     image: crowdsecurity/crowdsec
+    entrypoint: ["/bin/sh", "-c", "cscli collections install crowdsecurity/sshd && crowdsec -c /etc/crowdsec/config.yaml"]
     restart: always
     network_mode: bridge
     ports:
@@ -15,3 +16,5 @@ services:
       - /opt/crowdsec/data:/var/lib/crowdsec/data
       - /opt/npm/nginx:/opt/npm/nginx:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/log:/var/log/hostlog:ro
+      - ./acquis.yaml:/etc/crowdsec/acquis.yaml
