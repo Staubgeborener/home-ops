@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  renovate:
+    image: renovate/renovate:latest
+    container_name: renovate
+    env_file:
+      - .env
+    environment:
+      - LOG_LEVEL=info
+    volumes:
+      - ./renovate.json:/usr/src/app/config.json
+    command: >
+      renovate
+      --platform=github
+      --endpoint=https://api.github.com/
+      --token=${RENOVATE_TOKEN}
+      staubgeborener/gitops
+    restart: unless-stopped

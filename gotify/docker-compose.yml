@@ -1,0 +1,40 @@
+services:
+  gotify:
+    container_name: gotify
+    hostname: gotify
+    image: gotify/server
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - net
+    ports:
+      - "87:80"
+    volumes:
+      - data:/app/data
+    env_file:
+      - .env
+
+  igotify:
+    container_name: igotify
+    hostname: igotify
+    image: ghcr.io/androidseb25/igotify-notification-assist:latest
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    pull_policy: always
+    networks:
+      - net
+    ports:
+      - "88:8080"
+    volumes:
+      - api-data:/app/data
+    env_file:
+      - .env
+
+networks:
+  net:
+
+volumes:
+  data:
+  api-data:
