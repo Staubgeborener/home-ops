@@ -1,17 +1,13 @@
 services:
-  app:
-    container_name: nginx_proxy_manager
-    image: 'jc21/nginx-proxy-manager:latest'
+  npmplus:
+    container_name: npmplus
+    image: 'zoeyvid/npmplus'
     restart: unless-stopped
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
     volumes:
-      - ./data:/data
+      - /opt/npm:/data
       - ./letsencrypt:/etc/letsencrypt
-    networks:
-      - proxy_network
-
-networks:
-  proxy_network:
+    network_mode: host
+    environment:
+      - TZ=Europe/Berlin
+      - NPM_PORT=81
+      - LOGROTATE=true
