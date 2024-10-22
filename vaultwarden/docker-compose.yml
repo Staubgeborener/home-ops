@@ -1,0 +1,24 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest-alpine
+    container_name: vaultwarden
+    hostname: vaultwarden
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    dns:
+      - 1.1.1.1
+    environment:
+      - LOG_FILE=/data/logs/access.log
+      - WEBSOCKET_ENABLED=true
+      - ROCKET_ENV=prod
+      - ROCKET_WORKERS=10
+      - ROCKET_PORT=86
+      - TZ=Europe/Berlin
+      - LOG_LEVEL=error
+      - EXTENDED_LOGGING=true
+      - ADMIN_TOKEN=${ADMIN_TOKEN}
+    volumes:
+      - /var/log/vaultwarden/logs:/data/logs
+      - ./vw-data:/data
+    network_mode: host

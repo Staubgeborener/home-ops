@@ -9,7 +9,6 @@ letsencrypt/
 mosquitto-data/
 zigbee2mqtt-data/
 opt/
-vaultwarden/
 vw-data/
 
 !/zigbee2mqtt/zigbee2mqtt-data/configuration.yaml

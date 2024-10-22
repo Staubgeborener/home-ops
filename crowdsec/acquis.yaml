@@ -19,3 +19,8 @@ filenames:
   - /var/log/auth.log
 labels:
   type: syslog
+---
+filenames:
+ - /var/log/vaultwarden/logs/access.log
+labels:
+  type: Vaultwarden
