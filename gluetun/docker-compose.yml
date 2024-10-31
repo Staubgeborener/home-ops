@@ -1,0 +1,20 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
+      - VPN_TYPE=${VPN_TYPE}
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+      - WIREGUARD_PRESHARED_KEY=${WIREGUARD_PRESHARED_KEY}
+      - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
+      - HTTPPROXY=on
+    ports:
+      - 8888:8888/tcp # For Gluetun's built-in HTTP proxy (if needed)
+      - 8388:8388/tcp # For Gluetun's built-in Shadowsocks server (if needed)
+      - 8388:8388/udp # For Gluetun's built-in Shadowsocks server (if needed)
+    volumes:
+      - ./gluetun:/gluetun
+    restart: unless-stopped

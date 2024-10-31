@@ -21,6 +21,6 @@ labels:
   type: syslog
 ---
 filenames:
- - /var/log/vaultwarden/logs/access.log
+ - /var/log/vaultwarden/logs/*.log
 labels:
   type: Vaultwarden

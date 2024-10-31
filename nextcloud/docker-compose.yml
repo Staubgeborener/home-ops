@@ -21,10 +21,12 @@ services:
     volumes:
       - nextcloud:/var/www/html
       - ./opcache-recommed.ini:/usr/local/etc/php/conf.d/opcache-recommended.ini
+      #- /mnt/NC:/var/www/html/data
     environment:
       - POSTGRES_HOST=db
       - REDIS_HOST=redis
-      - PHP_MEMORY_LIMIT=1024M
+      - PHP_MEMORY_LIMIT=512M
+      - PHP_UPLOAD_LIMIT=512M
     env_file:
       - .env
     depends_on:

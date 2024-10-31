@@ -9,12 +9,12 @@ services:
       - "127.0.0.1:8080:8080"
     environment:
       - "TZ=Europe/Berlin"
-      - "COLLECTIONS=ZoeyVid/npmplus Dominic-Wagner/vaultwarden baudneo/gotify"
+      - "COLLECTIONS=ZoeyVid/npmplus Dominic-Wagner/vaultwarden baudneo/gotify crowdsecurity/nextcloud"
     volumes:
       - /opt/crowdsec/conf:/etc/crowdsec
       - /opt/crowdsec/data:/var/lib/crowdsec/data
       - /opt/npm/nginx:/opt/npm/nginx:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /var/log:/var/log/hostlog:ro
-      - /var/log/vaultwarden/logs/access.log:/var/log/vaultwarden/logs/access.log
+      - /var/log/vaultwarden/logs/:/var/log/vaultwarden/logs/
       - ./acquis.yaml:/etc/crowdsec/acquis.yaml
